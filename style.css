@@ -60,6 +60,15 @@ h1, h2 {
   box-shadow: 0 0 5px #ccc;
 }
 
+.letter-row {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+
 .letter-buttons {
   display: flex;
   flex-wrap: wrap;
