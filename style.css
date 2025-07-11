@@ -1,0 +1,163 @@
+/* Reset básico */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  padding: 20px;
+  color: #333;
+}
+
+h1, h2 {
+  margin-bottom: 10px;
+}
+
+/* Container principal: jogo + painel */
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Alinhar lado a lado em telas maiores */
+@media (min-width: 768px) {
+  .container {
+    flex-direction: row;
+    align-items: center;
+  }
+}
+
+/* Área do jogo (esquerda) */
+#game-area {
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+/* Painel de informações (direita) */
+#info-panel {
+  flex: 1;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 0 10px #ccc;
+  min-width: 250px;
+}
+
+/* Seções de letras */
+.player-section {
+  background-color: #fff;
+  padding: 10px;
+  border-radius: 10px;
+  width: 100%;
+  text-align: center;
+  box-shadow: 0 0 5px #ccc;
+}
+
+.letter-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.letter-btn {
+  width: 40px;
+  height: 40px;
+  font-size: 18px;
+  font-weight: bold;
+  border: none;
+  border-radius: 5px;
+  background-color: #4CAF50;
+  color: white;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.letter-btn:disabled {
+  background-color: #aaa;
+  cursor: not-allowed;
+}
+
+.letter-btn.selected {
+  border: 3px solid gold;
+  background-color: #ffc107;
+}
+
+.letter-btn.used {
+  opacity: 0.5;
+}
+
+/* Tabuleiro do jogo */
+#game-board {
+  display: grid;
+  grid-template-columns: repeat(6, 60px);
+  grid-template-rows: repeat(5, 60px);
+  gap: 5px;
+  justify-content: center;
+}
+
+.cell {
+  width: 60px;
+  height: 60px;
+  background-color: #ddd;
+  border-radius: 8px;
+  font-size: 22px;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.top-cell {
+  background-color: #bbb;
+  cursor: pointer;
+}
+
+.toot {
+  color: blue;
+}
+
+.otto {
+  color: red;
+}
+
+/* Painel de status */
+#game-status {
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+#current-player-info {
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+#message-log {
+  font-size: 14px;
+  color: #555;
+  min-height: 40px;
+  margin-bottom: 20px;
+}
+
+#restart-btn {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #2196F3;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+#restart-btn:hover {
+  background-color: #0b7dda;
+}

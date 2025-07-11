@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Toot and Otto</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="container">
+    
+    <!-- PARTE DO JOGO (ESQUERDA) -->
+    <section id="game-area">
+      
+      <!-- Letras do jogador TOOT -->
+      <div class="player-section" id="toot-letters">
+        <h2>TOOT (Azul)</h2>
+        <div class="letter-buttons" data-player="TOOT">
+          <!-- botões inseridos via JS ou HTML -->
+        </div>
+      </div>
+
+      <!-- Tabuleiro -->
+      <div id="game-board"></div>
+
+      <!-- Letras do jogador OTTO -->
+      <div class="player-section" id="otto-letters">
+        <h2>OTTO (Vermelho)</h2>
+        <div class="letter-buttons" data-player="OTTO">
+          <!-- botões inseridos via JS ou HTML -->
+        </div>
+      </div>
+
+    </section>
+
+    <!-- PAINEL DE INFORMAÇÕES (DIREITA) -->
+    <section id="info-panel">
+      <h2>Status da Partida</h2>
+      <div id="game-status">
+        Bem-vindo! O jogador TOOT começa.
+      </div>
+
+      <div id="current-player-info">
+        Jogador atual: <strong id="current-player">TOOT</strong>
+      </div>
+
+      <div id="message-log">
+        <!-- mensagens adicionais dinâmicas -->
+      </div>
+
+      <button id="restart-btn">🔄 Reiniciar Jogo</button>
+    </section>
+
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
