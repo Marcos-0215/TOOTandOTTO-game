@@ -206,11 +206,13 @@ function verificarFimDeJogo() {
 
   let encontrouTOOT = false;
   let encontrouOTTO = false;
+  const celulasDestacadas = [];
 
   for (let row = 0; row < rows; row++) {
     for (let col = 0; col < cols; col++) {
       for (let { dr, dc } of direcoes) {
         let letras = [];
+        let celulas = [];
 
         for (let i = 0; i < 4; i++) {
           const r = row + dr * i;
@@ -219,15 +221,23 @@ function verificarFimDeJogo() {
 
           if (!cell || !cell.textContent) {
             letras = [];
+            celulas = [];
             break;
           }
 
           letras.push(cell.textContent);
+          celulas.push(cell);
         }
 
         const palavra = letras.join("");
-        if (palavra === "TOOT") encontrouTOOT = true;
-        if (palavra === "OTTO") encontrouOTTO = true;
+        if (palavra === "TOOT") {
+          encontrouTOOT = true;
+          celulasDestacadas.push(...celulas);
+        }
+        if (palavra === "OTTO") {
+          encontrouOTTO = true;
+          celulasDestacadas.push(...celulas);
+        }
       }
     }
   }
@@ -250,6 +260,11 @@ function verificarFimDeJogo() {
       desativarTabuleiro();
     }
   }
+
+  celulasDestacadas.forEach(cell => {
+    cell.classList.add("highlight");
+  });
+
 }
 
 
