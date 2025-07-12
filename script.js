@@ -273,3 +273,33 @@ function desativarTabuleiro() {
     cell.style.pointerEvents = "none";
   });
 }
+
+
+//////
+
+// Botão Reiniciar
+document.getElementById("restart-btn").addEventListener("click", () => {
+  // Limpa o tabuleiro
+  createBoard();
+
+  // Reinicia variáveis
+  currentPlayer = "TOOT";
+  selectedLetter = null;
+  selectedButton = null;
+
+  // Atualiza status
+  updatePlayerInfo();
+  limparMensagem();
+
+  // Reativa os botões de letras
+  document.querySelectorAll(".letter-btn").forEach(btn => {
+    btn.disabled = false;
+    btn.classList.remove("used", "selected");
+  });
+
+  // Remove destaques visuais (caso existam)
+  document.querySelectorAll(".cell").forEach(cell => {
+    cell.classList.remove("highlight");
+    cell.textContent = "";
+  });
+});

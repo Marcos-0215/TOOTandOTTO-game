@@ -172,13 +172,13 @@ h1, h2 {
 }
 
 .highlight {
-  animation: blink 0.8s infinite alternate;
+  animation: blink 1s infinite alternate;
   background-color: yellow;
   font-weight: bold;
 }
 
 @keyframes blink {
-  0%   { background-color: yellow; color: black; }
-  100% { background-color: orange; color: white; }
+  0%   { background-color: yellow; }
+  100% { background-color: orange; }
 }
 
