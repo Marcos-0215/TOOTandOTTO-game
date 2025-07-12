@@ -99,6 +99,7 @@ const cols = 6;
 // Alterna o jogador
 function switchPlayer() {
   currentPlayer = currentPlayer === "TOOT" ? "OTTO" : "TOOT";
+  document.getElementById("game-status").textContent = "";
   updatePlayerInfo();
 }
 
@@ -290,6 +291,7 @@ document.getElementById("restart-btn").addEventListener("click", () => {
   // Atualiza status
   updatePlayerInfo();
   limparMensagem();
+  document.getElementById("game-status").textContent = "O jogador TOOT começa.";
 
   // Reativa os botões de letras
   document.querySelectorAll(".letter-btn").forEach(btn => {
