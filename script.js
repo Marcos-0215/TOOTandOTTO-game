@@ -169,8 +169,14 @@ function adicionarEventosNasColunas() {
           selectedButton = null;
 
           limparMensagem();
-          switchPlayer();
+          
           jogou = true;
+
+          verificarFimDeJogo();
+          if (document.getElementById("message-log").textContent === "") {
+            switchPlayer();
+          }
+
           break;
         }
       }
@@ -186,3 +192,69 @@ function adicionarEventosNasColunas() {
 gerarBotoesDeLetras();
 createBoard();
 updatePlayerInfo();
+
+
+////////////////////////////////
+
+function verificarFimDeJogo() {
+  const direcoes = [
+    { dr: 0, dc: 1 },   // Horizontal
+    { dr: 1, dc: 0 },   // Vertical
+    { dr: 1, dc: 1 },   // Diagonal
+    { dr: 1, dc: -1 }   // Diagonal
+  ];
+
+  let encontrouTOOT = false;
+  let encontrouOTTO = false;
+
+  for (let row = 0; row < rows; row++) {
+    for (let col = 0; col < cols; col++) {
+      for (let { dr, dc } of direcoes) {
+        let letras = [];
+
+        for (let i = 0; i < 4; i++) {
+          const r = row + dr * i;
+          const c = col + dc * i;
+          const cell = document.querySelector(`.cell[data-row="${r}"][data-col="${c}"]`);
+
+          if (!cell || !cell.textContent) {
+            letras = [];
+            break;
+          }
+
+          letras.push(cell.textContent);
+        }
+
+        const palavra = letras.join("");
+        if (palavra === "TOOT") encontrouTOOT = true;
+        if (palavra === "OTTO") encontrouOTTO = true;
+      }
+    }
+  }
+
+  // Verificar condições finais
+  if (encontrouTOOT && encontrouOTTO) {
+    mostrarMensagem("Empate! TOOT e OTTO foram formados.");
+    desativarTabuleiro();
+  } else if (encontrouTOOT) {
+    mostrarMensagem("TOOT venceu!");
+    desativarTabuleiro();
+  } else if (encontrouOTTO) {
+    mostrarMensagem("OTTO venceu!");
+    desativarTabuleiro();
+  } else {
+    // Verificar se todas as peças acabaram
+    const botoesRestantes = document.querySelectorAll('.letter-btn:not(:disabled)');
+    if (botoesRestantes.length === 0) {
+      mostrarMensagem("Empate! Ninguém venceu.");
+      desativarTabuleiro();
+    }
+  }
+}
+
+
+function desativarTabuleiro() {
+  document.querySelectorAll(".top-cell").forEach(cell => {
+    cell.style.pointerEvents = "none";
+  });
+}
